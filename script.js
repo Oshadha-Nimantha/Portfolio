@@ -281,6 +281,233 @@ function animateValue(element, start, end, duration) {
     requestAnimationFrame(update);
 }
 
+// ===== 3D TILT EFFECT =====
+function init3DTiltEffect() {
+    const tiltElements = document.querySelectorAll(
+        '.project-card, .stat-card, .skill-item, .achievement-card, .experience-card, .certificate-card'
+    );
+
+    const settings = {
+        maxTilt: 15,
+        perspective: 1000,
+        speed: 400,
+        glare: true,
+        maxGlare: 0.3
+    };
+
+    tiltElements.forEach(element => {
+        // Mouse enter
+        element.addEventListener('mouseenter', function (e) {
+            this.style.transition = `transform ${settings.speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
+        });
+
+        // Mouse move
+        element.addEventListener('mousemove', function (e) {
+            const rect = this.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+
+            // Calculate tilt
+            const tiltX = (mouseY / (rect.height / 2)) * -settings.maxTilt;
+            const tiltY = (mouseX / (rect.width / 2)) * settings.maxTilt;
+
+            // Apply 3D transform
+            this.style.transform = `
+                perspective(${settings.perspective}px)
+                rotateX(${tiltX}deg)
+                rotateY(${tiltY}deg)
+                translateZ(10px)
+                scale3d(1.02, 1.02, 1.02)
+            `;
+
+            // Dynamic shine effect based on mouse position
+            const shineX = ((e.clientX - rect.left) / rect.width) * 100;
+            const shineY = ((e.clientY - rect.top) / rect.height) * 100;
+
+            // Update shine gradient position
+            const beforeElement = this.querySelector('::before');
+            this.style.setProperty('--shine-x', `${shineX}%`);
+            this.style.setProperty('--shine-y', `${shineY}%`);
+        });
+
+        // Mouse leave
+        element.addEventListener('mouseleave', function (e) {
+            this.style.transition = `transform ${settings.speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
+            this.style.transform = `
+                perspective(${settings.perspective}px)
+                rotateX(0deg)
+                rotateY(0deg)
+                translateZ(0px)
+                scale3d(1, 1, 1)
+            `;
+        });
+    });
+}
+
+// ===== PARALLAX DEPTH EFFECT =====
+function initParallaxDepth() {
+    const heroContent = document.querySelector('.hero-content');
+    const codeBlock = document.querySelector('.code-block');
+    const heroRings = document.querySelectorAll('.hero-image-ring');
+
+    if (heroContent) {
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+
+            if (codeBlock) {
+                codeBlock.style.transform = `
+                    translateX(${x * 1.5}px)
+                    translateY(${y * 1.5}px)
+                    rotateX(${-y * 0.5}deg)
+                    rotateY(${x * 0.5}deg)
+                `;
+            }
+
+            heroRings.forEach((ring, index) => {
+                const multiplier = (index + 1) * 0.5;
+                ring.style.transform = `
+                    translateX(${x * multiplier}px)
+                    translateY(${y * multiplier}px)
+                    rotate(${ring.style.animationName ? 0 : 0}deg)
+                `;
+            });
+        });
+    }
+}
+
+// ===== FLOATING 3D ANIMATION FOR SECTIONS =====
+function initFloatingElements() {
+    const floatElements = document.querySelectorAll('.highlight-item');
+
+    floatElements.forEach((el, index) => {
+        const delay = index * 0.5;
+        el.style.animation = `float3DSubtle 4s ease-in-out ${delay}s infinite`;
+    });
+}
+
+// Add floating animation styles
+const float3DStyles = document.createElement('style');
+float3DStyles.textContent = `
+    @keyframes float3DSubtle {
+        0%, 100% {
+            transform: translateY(0) translateZ(0);
+        }
+        50% {
+            transform: translateY(-8px) translateZ(10px);
+        }
+    }
+    
+    /* Dynamic shine based on mouse position */
+    .project-card,
+    .skill-item {
+        --shine-x: 50%;
+        --shine-y: 50%;
+    }
+    
+    /* Enhanced 3D depth for icons */
+    .project-icon,
+    .skill-icon,
+    .achievement-icon,
+    .exp-icon,
+    .contact-icon {
+        transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    }
+    
+    .project-card:hover .project-icon,
+    .skill-item:hover .skill-icon,
+    .achievement-card:hover .achievement-icon,
+    .experience-card:hover .exp-icon,
+    .contact-item:hover .contact-icon {
+        transform: translateZ(30px) scale(1.15);
+    }
+    
+    /* 3D button hover */
+    .btn {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px) translateZ(10px) rotateX(5deg);
+    }
+    
+    /* 3D social links */
+    .social-link {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+    
+    .social-link:hover {
+        transform: translateY(-5px) translateZ(15px) rotateY(10deg);
+    }
+    
+    /* 3D nav logo */
+    .nav-logo {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-logo:hover {
+        transform: rotateY(15deg) scale(1.05);
+    }
+    
+    /* 3D section titles */
+    .section-title {
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+    }
+    
+    .section-title:hover {
+        transform: translateZ(20px) rotateX(2deg);
+    }
+    
+    /* Timeline 3D effect */
+    .timeline-content {
+        transform-style: preserve-3d;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+        transform: translateX(10px) translateZ(20px) rotateY(2deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+    
+    /* Filter buttons 3D */
+    .filter-btn {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .filter-btn:hover {
+        transform: translateY(-2px) translateZ(5px);
+    }
+    
+    .filter-btn.active {
+        transform: translateZ(10px);
+    }
+    
+    /* Soft skill tags 3D */
+    .soft-skill-tag {
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .soft-skill-tag:hover {
+        transform: translateY(-3px) translateZ(10px) rotateX(5deg);
+    }
+`;
+document.head.appendChild(float3DStyles);
+
+// Initialize 3D effects on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    init3DTiltEffect();
+    initParallaxDepth();
+    initFloatingElements();
+});
+
 // ===== CONSOLE EASTER EGG =====
 console.log(
     '%c👋 Hello there, curious developer!',
