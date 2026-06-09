@@ -85,7 +85,11 @@ const projectsData = {
         status: "In Development",
         timeline: "2025",
         githubLink: "https://github.com/PathumiRanasinghe/iwb25-469-pulselink",
-        heroIcon: "fas fa-heartbeat"
+        heroIcon: "fas fa-heartbeat",
+        images: [
+            "Pulse_Link/hero.png",
+            "Pulse_Link/logo.png"
+        ]
     }
     // Other projects will be added here later
 };
