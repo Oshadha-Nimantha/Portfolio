@@ -47,6 +47,45 @@ const projectsData = {
             "Smart_Cart/Screenshot_20251208-083027.png",
             "Smart_Cart/Screenshot_20251208-083031.png"
         ]
+    },
+    "pulselink": {
+        title: "PulseLink - Organ Matching System",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Ballerina", "REST API"],
+        overview: "PulseLink connects donor hospitals, transplant centers, and emergency services in real time to streamline the organ matching process and coordinate emergency transport. With a modern and responsive interface, the platform enables fast decisions and data-driven collaboration, ultimately helping to save lives.",
+        features: [
+            "<strong>Modern UI:</strong> Glassmorphism, dark theme, responsive design",
+            "<strong>Authentication:</strong> Secure login and signup with role-based access (admin/user)",
+            "<strong>Profile Management:</strong> Editable profiles with hospital-specific details",
+            "<strong>Real-Time Matching:</strong> Dynamic donor and recipient organ matching (planned)",
+            "<strong>Emergency Coordination:</strong> Dashboard for transport and logistics (planned)",
+            "<strong>Live Stats:</strong> Animated counters and statistics for donations and matches",
+            "<strong>Custom Error Pages:</strong> Branded 404 and error handling interfaces",
+            "<strong>Smooth Navigation:</strong> Sticky/floating navbar, profile dropdown, and seamless routing"
+        ],
+        technologies: [
+            { icon: "fab fa-react", name: "Next.js (App Router)" },
+            { icon: "fas fa-code", name: "TypeScript" },
+            { icon: "fab fa-css3-alt", name: "Tailwind CSS" },
+            { icon: "fas fa-server", name: "Ballerina Backend" },
+            { icon: "fas fa-map-marker-alt", name: "Google Maps API" }
+        ],
+        architecture: `
+            <h3>👥 User Roles</h3>
+            <p><strong>Admin:</strong> Manage dashboard, hospitals, and view all matches</p>
+            <p><strong>Hospital/User:</strong> Register, manage profile, view matches, and request transport</p>
+            <h3>📁 Project Structure</h3>
+            <pre><code>PulseLink/
+├── frontend/ (Next.js, Tailwind)
+│   ├── public/ (assets)
+│   └── src/app/ (App Router pages)
+└── backend/ (Ballerina API)
+    ├── service.bal
+    └── tests/</code></pre>
+        `,
+        status: "In Development",
+        timeline: "2025",
+        githubLink: "https://github.com/PathumiRanasinghe/iwb25-469-pulselink",
+        heroIcon: "fas fa-heartbeat"
     }
     // Other projects will be added here later
 };
