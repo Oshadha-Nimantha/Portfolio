@@ -159,7 +159,10 @@ const projectsData = {
         githubLink: "https://github.com/ghnx/Hike-Buddy",
         heroIcon: "fas fa-hiking",
         images: [
-            "https://github.com/user-attachments/assets/fa7b57f2-67c7-48a9-84aa-fb7a446e22f0"
+            "https://github.com/user-attachments/assets/fa7b57f2-67c7-48a9-84aa-fb7a446e22f0",
+            "Hike_Buddy/1736923972067.jpg",
+            "Hike_Buddy/1736923972131.jpg",
+            "Hike_Buddy/1736923972560.jpg"
         ]
     }
     // Other projects will be added here later
