@@ -90,6 +90,41 @@ const projectsData = {
             "Pulse_Link/hero.png",
             "Pulse_Link/logo.png"
         ]
+    },
+    "medibox": {
+        title: "Smart Medibox",
+        tags: ["C++", "IoT", "ESP32", "Node-RED", "MQTT"],
+        overview: "A comprehensive, IoT-enabled smart medicine box designed to ensure medication is taken on time and stored in optimal environmental conditions. This system features a dual-alarm scheduler, environmental monitoring, and a remote dashboard for real-time data visualization and control.",
+        features: [
+            "<strong>Environmental Monitoring:</strong> Continuously tracks temperature and humidity using a DHT22 sensor to ensure medicines are stored safely.",
+            "<strong>Visual & Audible Alerts:</strong> Triggers a red LED and a buzzer if temperature or humidity levels go beyond safe thresholds.",
+            "<strong>Dual Alarm System:</strong> Set up to two daily alarms for medication reminders.",
+            "<strong>OLED Display Interface:</strong> Displays the current time, environmental status, and a user-friendly menu.",
+            "<strong>Interactive Menu:</strong> Use push buttons to set time zone, configure/delete alarms, and view active alarms.",
+            "<strong>Snooze & Stop:</strong> Snooze an active alarm for 5 minutes or stop it completely.",
+            "<strong>Light-Controlled Servo:</strong> Adjusts position based on ambient light levels to control a lid or dispenser mechanism.",
+            "<strong>Real-time IoT Dashboard:</strong> Visualizes live temperature, humidity, and light intensity data.",
+            "<strong>Remote Control:</strong> Adjust key system parameters directly from the Node-RED dashboard via MQTT."
+        ],
+        technologies: [
+            { icon: "fas fa-microchip", name: "ESP32 Dev Kit" },
+            { icon: "fas fa-code", name: "C++ (PlatformIO)" },
+            { icon: "fas fa-project-diagram", name: "Node-RED" },
+            { icon: "fas fa-network-wired", name: "MQTT (emqx.io)" },
+            { icon: "fas fa-thermometer-half", name: "DHT22, LDR, Servo" }
+        ],
+        architecture: `
+            <h3>🛠️ How It Works</h3>
+            <p><strong>ESP32 Logic:</strong> The ESP32 acts as the brain. It connects via MQTT, fetches NTP time, checks sensor data against thresholds, handles alarms, publishes data, controls the servo, and processes button inputs for the OLED menu.</p>
+            <p><strong>Node-RED Flow:</strong> Subscribes to MQTT topics to receive live data from the ESP32. Visualizes this data using gauges and charts. Sliders on the dashboard publish back to the ESP32 to remotely adjust parameters like servo offset and sampling intervals.</p>
+        `,
+        status: "Completed",
+        timeline: "2024",
+        githubLink: "https://github.com/Oshadha-Nimantha/Medi-Box",
+        heroIcon: "fas fa-pills",
+        images: [
+            "Medi_Box/wiring.png"
+        ]
     }
     // Other projects will be added here later
 };
