@@ -291,6 +291,7 @@ console.log(
     'font-size: 14px; color: #a0a0b0;'
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 // ===== PROJECT NAVIGATION =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -315,5 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+=======
+>>>>>>> parent of 2b7915d (Add dummy project details page and make project cards clickable)
 =======
 >>>>>>> parent of 2b7915d (Add dummy project details page and make project cards clickable)
