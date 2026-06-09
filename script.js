@@ -297,8 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const projCards = document.querySelectorAll('.project-card');
     projCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Get the project title or ID if needed later, for now just go to dummy page
-            window.location.href = 'project-details.html';
+            const projectId = card.dataset.id;
+            if (projectId) {
+                window.location.href = `project-details.html?id=${projectId}`;
+            } else {
+                window.location.href = 'project-details.html';
+            }
         });
     });
 

@@ -106,6 +106,7 @@
         </div>
     </section>
 
+    <script src="projects-data.js"></script>
     <script>
         // Simple script for nav toggle
         const navToggle = document.getElementById('navToggle');
@@ -114,6 +115,96 @@
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+        });
+
+        // Load project data
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (projectId && typeof projectsData !== 'undefined' && projectsData[projectId]) {
+                const data = projectsData[projectId];
+
+                // Update Title & Desc
+                document.title = data.title + " | K.L.W. Oshadha Nimantha";
+                document.querySelector('.project-main-title').textContent = data.title;
+                document.querySelector('.project-main-desc').textContent = data.overview;
+                document.querySelector('.project-main-links a').href = data.githubLink;
+
+                // Update Hero Icon
+                if (data.heroIcon) {
+                    const heroIconEl = document.querySelector('.project-hero-image .placeholder-image i');
+                    if (heroIconEl) {
+                        heroIconEl.className = data.heroIcon;
+                    }
+                }
+
+                // Update Tags
+                const tagsContainer = document.querySelector('.project-main-tags');
+                tagsContainer.innerHTML = '';
+                data.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'tag';
+                    span.textContent = tag;
+                    tagsContainer.appendChild(span);
+                });
+
+                // Update Main Content Overview
+                const mainContent = document.querySelector('.main-content');
+                // Remove dummy overview paragraphs
+                const overviewParas = mainContent.querySelectorAll('p');
+                if (overviewParas.length >= 2) {
+                    overviewParas[0].remove();
+                    overviewParas[1].remove();
+                }
+                const overviewHeader = mainContent.querySelector('h2');
+                const newOverview = document.createElement('p');
+                newOverview.textContent = data.overview;
+                overviewHeader.insertAdjacentElement('afterend', newOverview);
+
+                // Update Features
+                const featureList = document.querySelector('.feature-list');
+                featureList.innerHTML = '';
+                data.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check-circle"></i> <span>${feature}</span>`;
+                    featureList.appendChild(li);
+                });
+
+                // Update Architecture / Extra info
+                const archHeader = mainContent.querySelectorAll('h2')[2];
+                if (archHeader && data.architecture) {
+                    // Replace dummy architecture with new HTML
+                    let nextEl = archHeader.nextElementSibling;
+                    while (nextEl) {
+                        const toRemove = nextEl;
+                        nextEl = nextEl.nextElementSibling;
+                        toRemove.remove();
+                    }
+                    archHeader.insertAdjacentHTML('afterend', data.architecture);
+                    archHeader.style.display = 'none'; // Hide the "Architecture & Design" generic header if using custom HTML
+                }
+
+                // Update Tech Stack
+                const techGrid = document.querySelector('.tech-grid');
+                techGrid.innerHTML = '';
+                data.technologies.forEach(tech => {
+                    const div = document.createElement('div');
+                    div.className = 'tech-item';
+                    div.innerHTML = `<i class="${tech.icon}"></i> ${tech.name}`;
+                    techGrid.appendChild(div);
+                });
+
+                // Update Status & Timeline
+                const sidebarCards = document.querySelectorAll('.sidebar-card');
+                if (sidebarCards.length > 1) {
+                    sidebarCards[1].innerHTML = `
+                        <h3>Project Status</h3>
+                        <p><strong>Status:</strong> ${data.status}</p>
+                        <p><strong>Timeline:</strong> ${data.timeline}</p>
+                    `;
+                }
+            }
         });
     </script>
 </body>
