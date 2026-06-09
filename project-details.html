@@ -52,7 +52,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="project-hero-image">
+                <div class="project-hero-image" id="hero-image-container">
                     <div class="placeholder-image">
                         <i class="fas fa-image"></i>
                         <p>Project Image Placeholder</p>
@@ -85,6 +85,9 @@
                         <p>Architecture Diagram Placeholder</p>
                     </div>
                     <p>Brief explanation of the architecture diagram above and how the different components of the system interact with each other.</p>
+
+                    <h2 id="gallery-header" style="display: none;">Project Gallery</h2>
+                    <div class="image-gallery" id="image-gallery"></div>
                 </div>
                 <div class="sidebar">
                     <div class="sidebar-card">
@@ -131,8 +134,11 @@
                 document.querySelector('.project-main-desc').textContent = data.overview;
                 document.querySelector('.project-main-links a').href = data.githubLink;
 
-                // Update Hero Icon
-                if (data.heroIcon) {
+                // Update Hero Icon / Image
+                if (data.images && data.images.length > 0) {
+                    const heroContainer = document.getElementById('hero-image-container');
+                    heroContainer.innerHTML = `<img src="${data.images[0]}" alt="${data.title}" class="hero-img">`;
+                } else if (data.heroIcon) {
                     const heroIconEl = document.querySelector('.project-hero-image .placeholder-image i');
                     if (heroIconEl) {
                         heroIconEl.className = data.heroIcon;
@@ -203,6 +209,21 @@
                         <p><strong>Status:</strong> ${data.status}</p>
                         <p><strong>Timeline:</strong> ${data.timeline}</p>
                     `;
+                }
+
+                // Update Gallery
+                if (data.images && data.images.length > 1) {
+                    const galleryHeader = document.getElementById('gallery-header');
+                    const galleryContainer = document.getElementById('image-gallery');
+                    galleryHeader.style.display = 'block';
+                    
+                    for (let i = 1; i < data.images.length; i++) {
+                        const img = document.createElement('img');
+                        img.src = data.images[i];
+                        img.alt = `${data.title} screenshot ${i}`;
+                        img.className = 'gallery-img';
+                        galleryContainer.appendChild(img);
+                    }
                 }
             }
         });

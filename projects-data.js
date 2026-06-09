@@ -37,7 +37,16 @@ const projectsData = {
         status: "Completed",
         timeline: "2024",
         githubLink: "https://github.com/Oshadha-Nimantha/SmartCart",
-        heroIcon: "fas fa-shopping-cart"
+        heroIcon: "fas fa-shopping-cart",
+        images: [
+            "Smart_Cart/Screenshot_20251208-083105.png",
+            "Smart_Cart/Screenshot_2025-12-08_083844.png",
+            "Smart_Cart/Screenshot_2025-12-08_083859.png",
+            "Smart_Cart/Screenshot_20251208-082909.png",
+            "Smart_Cart/Screenshot_20251208-082922.png",
+            "Smart_Cart/Screenshot_20251208-083027.png",
+            "Smart_Cart/Screenshot_20251208-083031.png"
+        ]
     }
     // Other projects will be added here later
 };
