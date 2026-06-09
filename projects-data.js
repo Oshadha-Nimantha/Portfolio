@@ -125,6 +125,42 @@ const projectsData = {
         images: [
             "Medi_Box/wiring.png"
         ]
+    },
+    "hikebuddy": {
+        title: "Hike Buddy",
+        tags: ["C++", "PCB Design", "3D Modeling", "Hardware"],
+        overview: "Hike Buddy is a multi-functional device designed to be the ultimate companion for hikers and outdoor enthusiasts. Developed by Team Voltrix, it combines essential tools into one compact and durable gadget, ensuring safety and convenience during adventures.",
+        features: [
+            "<strong>Torch:</strong> High-lumen LED light with continuous operation for up to 5 days on a single charge. Features adjustable brightness and acts as an emergency SOS flashlight.",
+            "<strong>Compass:</strong> Accurate and reliable digital compass with an easy-to-read integrated display.",
+            "<strong>Water Purity Assessor:</strong> Detects total dissolved solutes (TDS) in water to provide instant feedback on water quality.",
+            "<strong>SOS Signalling:</strong> An inbuilt button to alert an SOS signal for better visualization for rescuers."
+        ],
+        technologies: [
+            { icon: "fas fa-code", name: "C++ Firmware" },
+            { icon: "fas fa-microchip", name: "Custom PCB Design" },
+            { icon: "fas fa-cube", name: "3D CAD Modeling" },
+            { icon: "fas fa-print", name: "3D Printing" }
+        ],
+        architecture: `
+            <h3>🛠️ Project Resources</h3>
+            <p><strong>Hardware Design:</strong> Includes initial concept sketches, complete PCB schematics and layout files.</p>
+            <p><strong>Enclosure:</strong> Custom designed 3D CAD models optimized for 3D printing and assembly.</p>
+            <h3>👥 Team Voltrix</h3>
+            <ul>
+                <li>Yehen Asuramuni</li>
+                <li>Sineth Jayawardena</li>
+                <li>Sakith Nethkalana</li>
+                <li>Oshadha Nimantha</li>
+            </ul>
+        `,
+        status: "Completed",
+        timeline: "2023",
+        githubLink: "https://github.com/ghnx/Hike-Buddy",
+        heroIcon: "fas fa-hiking",
+        images: [
+            "https://github.com/user-attachments/assets/fa7b57f2-67c7-48a9-84aa-fb7a446e22f0"
+        ]
     }
     // Other projects will be added here later
 };
