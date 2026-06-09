@@ -1,0 +1,193 @@
+/* ===== PROJECT DETAILS SPECIFIC STYLES ===== */
+
+.project-header {
+    padding-top: 150px;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-xl);
+    transition: var(--transition-base);
+}
+
+.back-link:hover {
+    color: var(--accent-primary);
+    transform: translateX(-5px);
+}
+
+.project-header-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.project-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-main-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-main-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    border: 1px dashed var(--accent-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+    gap: var(--spacing-md);
+}
+
+.placeholder-image.wide {
+    height: 300px;
+    margin: var(--spacing-lg) 0;
+}
+
+.placeholder-image i {
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+.project-content-section {
+    padding-top: var(--spacing-3xl);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-3xl);
+}
+
+.main-content h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-content h2:first-child {
+    margin-top: 0;
+}
+
+.main-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.05rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.feature-list i {
+    color: var(--accent-primary);
+    margin-top: 4px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.sidebar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    backdrop-filter: blur(20px);
+}
+
+.sidebar-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.sidebar-card strong {
+    color: var(--text-primary);
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    padding: var(--spacing-sm);
+    background: var(--bg-glass);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.tech-item i {
+    color: var(--accent-primary);
+    width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .project-header-content,
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-main-title {
+        font-size: 2rem;
+    }
+}

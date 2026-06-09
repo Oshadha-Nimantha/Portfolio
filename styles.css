@@ -780,6 +780,7 @@ img {
     overflow: hidden;
     backdrop-filter: blur(20px);
     transition: var(--transition-base);
+    cursor: pointer;
 }
 
 .project-card:hover {

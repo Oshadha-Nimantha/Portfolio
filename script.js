@@ -290,3 +290,23 @@ console.log(
     '%cInterested in working together? Reach out at nimanthaklwo.22@uom.lk',
     'font-size: 14px; color: #a0a0b0;'
 );
+
+// ===== PROJECT NAVIGATION =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Make project cards clickable
+    const projCards = document.querySelectorAll('.project-card');
+    projCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Get the project title or ID if needed later, for now just go to dummy page
+            window.location.href = 'project-details.html';
+        });
+    });
+
+    // Prevent clicking the GitHub link from triggering the card click
+    const projLinks = document.querySelectorAll('.project-link');
+    projLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+});
