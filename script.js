@@ -290,6 +290,7 @@ console.log(
     '%cInterested in working together? Reach out at nimanthaklwo.22@uom.lk',
     'font-size: 14px; color: #a0a0b0;'
 );
+<<<<<<< HEAD
 
 // ===== PROJECT NAVIGATION =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -314,3 +315,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+=======
+>>>>>>> parent of 2b7915d (Add dummy project details page and make project cards clickable)
